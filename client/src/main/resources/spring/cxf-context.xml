@@ -13,8 +13,4 @@
                      serviceClass="cc.notsoclever.customerservice.CustomerService"
                      xmlns:s="http://notsoclever.cc/customerService"/>
 
-    <bean id="CustomerService" class="cc.notsoclever.examples.cxf.wsdlfirst.server.CustomerServiceImpl"/>
-
-
-
 </beans>
