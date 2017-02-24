@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.pfry.springboot.camel.cxf</groupId>
+  <artifactId>wsdl-first</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>WSDL FIRST</name>
+  <packaging>pom</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- configure the versions you want to use here -->
+		<fabric8.version>2.2.170.redhat-000010</fabric8.version>
+		<spring-boot.version>1.4.1.RELEASE</spring-boot.version>
+		<cxf.xjc.version>3.0.5</cxf.xjc.version>
+
+		<!-- maven plugin versions -->
+		<fabric8.maven.plugin.version>3.1.80.redhat-000010</fabric8.maven.plugin.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- import fabric8 platform bom first -->
+			<dependency>
+				<groupId>io.fabric8</groupId>
+				<artifactId>fabric8-project-bom-camel-spring-boot</artifactId>
+				<version>${fabric8.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+  <modules>
+     <module>server</module>
+     <module>client</module>
+  </modules>
+</project>
