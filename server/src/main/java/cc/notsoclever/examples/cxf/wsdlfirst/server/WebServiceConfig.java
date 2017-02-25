@@ -16,10 +16,8 @@
 package cc.notsoclever.examples.cxf.wsdlfirst.server;
 
 import org.apache.camel.component.cxf.CxfEndpoint;
-import org.apache.camel.component.servlet.CamelHttpTransportServlet;
 import org.apache.cxf.Bus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,13 +32,6 @@ public class WebServiceConfig {
     
     //NOTE THE VALUE OF cxf.path in application.properties this leads to 
     //the URL of the soap service being of the form /service/CustomerServicePort
-    @Bean
-    ServletRegistrationBean servletRegistrationBean() {
-        ServletRegistrationBean servlet = new ServletRegistrationBean(
-            new CamelHttpTransportServlet(), "/CustomerServicePort/*");
-        servlet.setName("CamelServlet");
-        return servlet;
-    }
     
     @Bean(name="CustomerServiceProcessor")
     public CustomerServiceProcessor getProcessor(){
