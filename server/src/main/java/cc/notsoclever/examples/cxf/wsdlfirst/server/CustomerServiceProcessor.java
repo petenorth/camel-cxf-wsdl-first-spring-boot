@@ -26,6 +26,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,6 +34,7 @@ import java.util.List;
 public class CustomerServiceProcessor implements Processor {
     private static final transient Logger LOG = LoggerFactory.getLogger(CustomerServiceProcessor.class);
 
+    @Autowired
     CustomerService customerService;
 
     @Override

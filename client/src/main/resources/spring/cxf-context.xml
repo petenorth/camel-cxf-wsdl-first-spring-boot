@@ -8,7 +8,7 @@
        http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
 
     <cxf:cxfEndpoint id="customerServiceEndpoint"
-                     address="http://localhost:9090/CustomerServicePort"
+                     address="http://localhost:8080/service/CustomerServicePort"
                      serviceName="s:customer:customerServiceService"
                      serviceClass="cc.notsoclever.customerservice.CustomerService"
                      xmlns:s="http://notsoclever.cc/customerService"/>
