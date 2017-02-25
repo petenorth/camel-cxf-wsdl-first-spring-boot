@@ -16,11 +16,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import cc.notsoclever.customerservice.Customer;
-import cc.notsoclever.customerservice.NoSuchCustomerException;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.cxf.CxfEndpoint;
 import org.apache.camel.component.cxf.common.message.CxfConstants;
 import org.apache.cxf.message.MessageContentsList;
 import org.junit.Assert;
@@ -28,18 +27,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Bean;
+
+import cc.notsoclever.customerservice.Customer;
+import cc.notsoclever.customerservice.CustomerService;
+import cc.notsoclever.customerservice.NoSuchCustomerException;
 
 /**
  * A spring-boot application that includes a Camel route builder to setup the Camel routes
  */
 @SpringBootApplication
-@ImportResource({"classpath:spring/camel-client-context.xml"})
 public class Application extends RouteBuilder {
 
     // must have a main method spring-boot can run
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+    }
+    
+    @Bean(name="customerServiceEndpoint")
+    public CxfEndpoint endpoint() {
+    	
+    	CxfEndpoint cxfEndpoint = new CxfEndpoint();
+    	cxfEndpoint.setAddress("http://localhost:8080/service/CustomerServicePort");
+    	cxfEndpoint.setServiceNameString("s:customer:customerServiceService");
+    	cxfEndpoint.setServiceClass(CustomerService.class);
+        return cxfEndpoint;
     }
 
 
