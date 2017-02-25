@@ -25,6 +25,6 @@ public class Application extends RouteBuilder {
 
         from("cxf:bean:customerServiceEndpoint")
     	//from("cxf:/CustomerServicePort?serviceClass=" + CustomerService.class.getName())
-                .to("CustomerServiceProcessor");
+       .to("CustomerServiceProcessor");
     }
 }

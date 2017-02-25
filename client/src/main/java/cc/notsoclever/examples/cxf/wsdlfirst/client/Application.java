@@ -44,11 +44,11 @@ public class Application extends RouteBuilder {
         SpringApplication.run(Application.class, args);
     }
     
-    @Bean(name="customerServiceEndpoint")
-    public CxfEndpoint endpoint() {
+    @Bean
+    public CxfEndpoint customerServiceEndpoint() {
     	
     	CxfEndpoint cxfEndpoint = new CxfEndpoint();
-    	cxfEndpoint.setAddress("http://localhost:8080/service/CustomerServicePort");
+    	cxfEndpoint.setAddress("{{customerservice.endpoint}}"); //configuration property in src/main/resources/application.properties
     	cxfEndpoint.setServiceNameString("s:customer:customerServiceService");
     	cxfEndpoint.setServiceClass(CustomerService.class);
         return cxfEndpoint;

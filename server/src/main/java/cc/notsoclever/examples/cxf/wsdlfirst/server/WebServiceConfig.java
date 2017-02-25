@@ -38,8 +38,8 @@ public class WebServiceConfig {
     	return new CustomerServiceProcessor();
     }
 
-    @Bean(name="customerServiceEndpoint")
-    public CxfEndpoint endpoint() {
+    @Bean
+    public CxfEndpoint customerServiceEndpoint() {
     	
     	CxfEndpoint cxfEndpoint = new CxfEndpoint();
     	cxfEndpoint.setAddress("/CustomerServicePort");
@@ -49,7 +49,7 @@ public class WebServiceConfig {
         return cxfEndpoint;
     }
     
-    @Bean(name="CustomerService")
+    @Bean
     public CustomerService customerService()
     {
     	return new CustomerServiceImpl();
